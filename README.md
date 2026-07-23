@@ -6,11 +6,11 @@ A lightweight, automated python-based tool that scrapes proxies from **ProxyDB**
 
 ## Key Features
 
-- **Automated Scraping**: Scrapes proxy lists dynamically from ProxyDB.
+- **Automated Scraping**: Scrapes SOCKS5 & High Anonymous proxy lists dynamically from ProxyDB.
 - **Concurrent Live Verification**: Uses multi-threading to quickly test each proxy candidate against live endpoints.
 - **Master & Categorized Output**: Saves all active proxies in `proxies/ALL.txt` and groups them by country code (e.g., `CN.txt`, `US.txt`, `IN.txt`).
 - **Automatic Cleanup**: Re-evaluates previously saved proxies and purges offline/dead nodes automatically.
-- **CI/CD Integration**: Pre-configured GitHub Actions workflow runs every 6 hours to maintain fresh proxy lists.
+- **CI/CD Integration**: Pre-configured GitHub Actions workflow runs every 30 minutes to maintain fresh proxy lists.
 
 ---
 
@@ -19,7 +19,7 @@ A lightweight, automated python-based tool that scrapes proxies from **ProxyDB**
 ```text
 ├── .github/
 │   └── workflows/
-│       └── update_proxies.yml    # GitHub Actions Workflow (Runs every 6 hours)
+│       └── update_proxies.yml    # GitHub Actions Workflow (Runs every 30 minutes)
 ├── main.py                       # Core Python script for scraping & checking
 ├── requirements.txt              # Project dependencies
 ├── .gitignore                    # Prevents generated proxy outputs from tracked commits
@@ -57,7 +57,7 @@ Generated proxies will be output to the `proxies/` directory (created automatica
 
 ## Automated Workflow (GitHub Actions)
 
-The repository includes a scheduled GitHub Workflow (`.github/workflows/update_proxies.yml`) that runs every 6 hours. You can also trigger it manually from the **Actions** tab on your GitHub repository page.
+The repository includes a scheduled GitHub Workflow (`.github/workflows/update_proxies.yml`) that runs automatically **every 30 minutes**. You can also trigger it manually from the **Actions** tab on your GitHub repository page.
 
 ---
 
