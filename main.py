@@ -126,6 +126,14 @@ def save_live_proxies(live_proxies):
             country_map[country] = set()
         country_map[country].add(proxy_str)
         
+    # Purge old .txt files first so dead proxies in country files don't linger
+    for filename in os.listdir(PROXIES_DIR):
+        if filename.lower().endswith(".txt"):
+            try:
+                os.remove(os.path.join(PROXIES_DIR, filename))
+            except Exception as e:
+                print(f"Warning: Could not delete old proxy file {filename}: {e}")
+        
     # Save master list (ALL.txt)
     all_file_path = os.path.join(PROXIES_DIR, "ALL.txt")
     sorted_all = sorted(list(all_live_proxies))
